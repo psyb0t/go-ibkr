@@ -2,6 +2,10 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.1, 2026-10-16
+
+- Added the `go-ibkr` agent skill. The README's new Agent integrations section has the install commands for Claude Code, Codex and ClawHub.
+
 ## v0.1.0, 2026-10-16
 
 - Added `ibkr`, a REST client for the Interactive Brokers Web API generated with oapi-codegen from the published OpenAPI document (spec version 2.41.0, 179 paths).

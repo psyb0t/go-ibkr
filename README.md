@@ -101,6 +101,34 @@ make generate
 - `scripts/patch-spec.sh` writes `api/openapi.patched.json` with the spec defects that stop oapi-codegen fixed. Path parameters missing from their path template are renamed to the undeclared placeholder when there is exactly one, and dropped otherwise. Placeholders with no parameter get a required string parameter. Duplicate operation IDs get a numeric suffix (`getTradingSchedule2`).
 - oapi-codegen runs with `config.yaml` against the patched spec.
 
+## Agent integrations
+
+The [skill](.agents/skills/go-ibkr) teaches a coding agent how to use go-ibkr when it writes Go. It works in any agent that reads `.agents/skills/`, and installs natively in the clients below.
+
+### Claude Code
+
+```bash
+claude plugin marketplace add psyb0t/agents
+claude plugin install go-ibkr@psyb0t
+```
+
+### Codex
+
+```bash
+codex plugin marketplace add psyb0t/agents
+codex plugin add go-ibkr@psyb0t
+```
+
+Codex also picks the skill up with no install in any checkout of this repo.
+
+### OpenClaw
+
+The skill is published to ClawHub on every release:
+
+```bash
+openclaw skills install @psyb0t/go-ibkr
+```
+
 ## Development
 
 Every command runs in the `Dockerfile.dev` image. The host needs only Docker and Make.
