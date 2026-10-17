@@ -48,32 +48,26 @@ func main() {
 		panic(err)
 	}
 
-	status, err := client.GetBrokerageStatusWithResponse(context.Background())
+	res, err := client.GetBrokerageAccountsWithResponse(context.Background())
 	if err != nil {
 		panic(err)
 	}
 
-	if status.JSON200 == nil || status.JSON200.Authenticated == nil ||
-		!*status.JSON200.Authenticated {
-		panic("gateway session is not authenticated, log in at https://localhost:5000")
-	}
-
-	accounts, err := client.GetBrokerageAccountsWithResponse(context.Background())
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println(*accounts.JSON200.Accounts)
+	fmt.Println((*res.JSON200.Accounts)[0])
 }
 ```
 
 Only skip certificate checks for a gateway on your own machine. Point the client at any other host with normal TLS.
 
+The same call is in `example_test.go`, where it runs against a stub gateway, so `make test` checks it.
+
+The full API, with the spec's descriptions as doc comments, is in the [Go reference](https://pkg.go.dev/github.com/psyb0t/go-ibkr) and in `go doc github.com/psyb0t/go-ibkr`.
+
 ## Auth
 
 I don't implement any login flow here. The client sends whatever the session you hand it carries. There are two ways to get one.
 
-**Client Portal Gateway.** Download and run the gateway from Interactive Brokers, open `https://localhost:5000` in a browser and log in. The gateway keeps the brokerage session and adds the auth to every request it forwards, so the client needs no credentials, only the base URL `https://localhost:5000` (or wherever you run the gateway). Call `GetSessionTokenWithResponse` (`POST /v1/api/tickle`) about once a minute to keep the session alive.
+**Client Portal Gateway.** Download and run the gateway from Interactive Brokers, open `https://localhost:5000` in a browser and log in. The gateway keeps the brokerage session and adds the auth to every request it forwards, so the client needs no credentials, only the base URL `https://localhost:5000` (or wherever you run the gateway). `GetBrokerageStatusWithResponse` (`POST /v1/api/iserver/auth/status`) reports whether the session is logged in. Call `GetSessionTokenWithResponse` (`POST /v1/api/tickle`) about once a minute to keep the session alive.
 
 **OAuth.** If you have OAuth access to `https://api.ibkr.com`, get the access token with your own OAuth code and attach it with a request editor:
 

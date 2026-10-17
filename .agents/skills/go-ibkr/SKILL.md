@@ -1,6 +1,7 @@
 ---
 name: go-ibkr
-description: Unofficial Go client for the Interactive Brokers Web API (Client Portal API v1), generated with oapi-codegen from the OpenAPI document Interactive Brokers publishes. Package `ibkr` (`github.com/psyb0t/go-ibkr`) has a typed `...WithResponse` method for each of the spec's endpoints: session status and keepalive, accounts, portfolio positions and summary, contract search and details, market data snapshots, order submission, status, modification and cancellation, and model portfolios. It works through a local Client Portal Gateway or against `https://api.ibkr.com` with an OAuth token. Use when Go code needs to read an Interactive Brokers account, look up contracts or market data, or place orders, or already imports go-ibkr.
+description: Unofficial Go client for the Interactive Brokers Web API (Client Portal API v1), generated with oapi-codegen from the OpenAPI document Interactive Brokers publishes. Package `ibkr` (`github.com/psyb0t/go-ibkr`) has a typed `...WithResponse` method for each of the spec's endpoints, covering session status and keepalive, accounts, portfolio positions and summary, contract search and details, market data snapshots, order submission, status, modification and cancellation, and model portfolios. It works through a local Client Portal Gateway or against `https://api.ibkr.com` with an OAuth token. Use when Go code needs to read an Interactive Brokers account, look up contracts or market data, or place orders, or already imports go-ibkr.
+license: MIT
 homepage: https://github.com/psyb0t/go-ibkr
 user-invocable: true
 metadata:
@@ -39,6 +40,20 @@ For install, both auth setups, operation lookup and response handling, see [refe
 - You need the TWS socket API. This client covers the Web API only.
 - You need a client maintained by Interactive Brokers. This one is unofficial and not affiliated with Interactive Brokers.
 - You want to change the generated client itself. See `AGENTS.md` in the repo.
+
+## Finding endpoints and types
+
+The examples below cover a few calls. Every operation in the spec has a generated method, and the spec's descriptions are on them as Go doc comments. Look names and fields up instead of guessing. After `go get github.com/psyb0t/go-ibkr`, from inside your module:
+
+```bash
+go doc github.com/psyb0t/go-ibkr ClientWithResponsesInterface  # every endpoint method
+go doc github.com/psyb0t/go-ibkr GetPaginatedPositionsParams   # one method, params type or model
+go doc -all github.com/psyb0t/go-ibkr                          # the whole package
+```
+
+The same documentation is at https://pkg.go.dev/github.com/psyb0t/go-ibkr.
+
+Method names come from the spec's operation IDs. `<OperationId>WithResponse` takes the context, then the path parameters in order, then `*<OperationId>Params` when the operation has query or header parameters, then the request body when it has one. The `JSON200` field (or `JSON201` and so on, per declared status) holds the decoded body; it is nil for any other status. Each method's doc comment names its path (`Corresponds with GET /v1/api/iserver/accounts`), so filter the interface listing by path to find one, and operation IDs the spec repeats get a numeric suffix (`GetTradingSchedule2`).
 
 ## Usage
 

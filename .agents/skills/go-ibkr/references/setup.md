@@ -34,7 +34,7 @@ Get the access token with your own OAuth code; the client has no OAuth flow. Use
 - `ibkr.NewClientWithResponses(server, opts...)`. Options: `ibkr.WithHTTPClient`, `ibkr.WithRequestEditorFn`, `ibkr.WithBaseURL`.
 - `server` is scheme and host only. The generated paths include `/v1/api/...` and `/gw/api/v1/...`.
 - Each operation has `Client.X` (raw `*http.Response`), `ClientWithResponses.XWithResponse` (parsed) and `NewXRequest` (request only). Operations with a body also have `XWithBodyWithResponse` taking a raw `io.Reader`.
-- Method names are the spec's operation IDs. Look one up by path with `grep -n 'Corresponds with' client.gen.go` in the module source. Duplicate operation IDs in the spec get a numeric suffix (`GetTradingSchedule2`).
+- Method names are the spec's operation IDs. Each method's doc comment names its path, so look one up with `go doc github.com/psyb0t/go-ibkr ClientWithResponsesInterface | grep '/iserver/accounts'`. Duplicate operation IDs in the spec get a numeric suffix (`GetTradingSchedule2`).
 
 ## Common operations
 
