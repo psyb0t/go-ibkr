@@ -40,6 +40,7 @@ make sec       # gitleaks, govulncheck, semgrep
 - The duplicate operation ID suffixes (`GetTradingSchedule2`) depend on the order operations appear in the spec. An upstream reorder can swap which method gets the suffix.
 - Spec paths carry their full prefix (`/v1/api/...`, `/gw/api/v1/...`), so the base URL is scheme and host only. Adding a path to the base URL doubles the prefix.
 - `make generate` always downloads the current spec, so it can change the client even when nothing here changed. Review the generated diff before committing it.
+- `.github/workflows/regen.yml` regenerates the client every day and releases the result. When the checks fail, Claude edits the repository to fix them, but a fix may not touch the paths listed under `fix_protected_paths` in that workflow: the workflows, the Makefile, `AGENTS.md`, `.agents/rules/`, the lint, security and spec download scripts and their configs. A problem that needs a change there fails the run and needs a manual fix.
 
 ## Rules
 

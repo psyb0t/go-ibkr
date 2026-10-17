@@ -101,6 +101,8 @@ make generate
 - `scripts/patch-spec.sh` writes `api/openapi.patched.json` with the spec defects that stop oapi-codegen fixed. Path parameters missing from their path template are renamed to the undeclared placeholder when there is exactly one, and dropped otherwise. Placeholders with no parameter get a required string parameter. Duplicate operation IDs get a numeric suffix (`getTradingSchedule2`).
 - oapi-codegen runs with `config.yaml` against the patched spec.
 
+`.github/workflows/regen.yml` does the same every day in CI. When the new spec changes the client, it runs `make lint`, `make test` and `make sec`. If a check fails, Claude edits the code and the checks run again, up to three times, and a review step reads the result. A passing change is committed with a CHANGELOG entry and tagged as the next release: a patch version for fixes and additions, a minor version for breaking changes.
+
 ## Agent integrations
 
 The [skill](.agents/skills/go-ibkr) teaches a coding agent how to use go-ibkr when it writes Go. It works in any agent that reads `.agents/skills/`, and installs natively in the clients below.
