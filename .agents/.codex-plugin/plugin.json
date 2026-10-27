@@ -1,6 +1,6 @@
 {
   "name": "go-ibkr",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Unofficial Go client for the Interactive Brokers Web API (Client Portal API v1): accounts, positions, contracts, market data and orders, generated from the spec Interactive Brokers publishes.",
   "author": { "name": "psyb0t", "url": "https://github.com/psyb0t" },
   "homepage": "https://github.com/psyb0t/go-ibkr",
