@@ -2,6 +2,11 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.1.7, 2026-11-19
+
+- Raised the minimum Go version in `go.mod` from 1.26.10 to 1.26.11, which fixes the `net/http` crash GO-2026-6859 found by govulncheck.
+- The development image is based on `golang:1.26.11-trixie`, pinned by its new digest. The Go version in the setup reference for the `go-ibkr` skill is updated to match.
+
 ## v0.1.6, 2026-11-05
 
 - Development image package installation uses HTTPS and bounded retries for signed snapshot indexes and package downloads.
