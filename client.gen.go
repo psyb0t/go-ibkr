@@ -4644,14 +4644,39 @@ func (e IdentificationCardColor) Valid() bool {
 	}
 }
 
+// Defines values for IdentityDocumentCardColor.
+const (
+	IdentityDocumentCardColorBLUE   IdentityDocumentCardColor = "BLUE"
+	IdentityDocumentCardColorGREEN  IdentityDocumentCardColor = "GREEN"
+	IdentityDocumentCardColorYELLOW IdentityDocumentCardColor = "YELLOW"
+)
+
+// Valid indicates whether the value is a known member of the IdentityDocumentCardColor enum.
+func (e IdentityDocumentCardColor) Valid() bool {
+	switch e {
+	case IdentityDocumentCardColorBLUE:
+		return true
+	case IdentityDocumentCardColorGREEN:
+		return true
+	case IdentityDocumentCardColorYELLOW:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for IdentityDocumentDocType.
 const (
-	IdentityDocumentDocTypeALIENID        IdentityDocumentDocType = "ALIEN_ID"
-	IdentityDocumentDocTypeDRIVERSLICENSE IdentityDocumentDocType = "DRIVERS_LICENSE"
-	IdentityDocumentDocTypeMEDICARECARD   IdentityDocumentDocType = "MEDICARE_CARD"
-	IdentityDocumentDocTypeNATIONALID     IdentityDocumentDocType = "NATIONAL_ID"
-	IdentityDocumentDocTypePASSPORT       IdentityDocumentDocType = "PASSPORT"
-	IdentityDocumentDocTypePROOFOFAGE     IdentityDocumentDocType = "PROOF_OF_AGE"
+	IdentityDocumentDocTypeALIENID               IdentityDocumentDocType = "ALIEN_ID"
+	IdentityDocumentDocTypeDRIVERSLICENSE        IdentityDocumentDocType = "DRIVERS_LICENSE"
+	IdentityDocumentDocTypeHKANDMACAUENTRYPERMIT IdentityDocumentDocType = "HK_AND_MACAU_ENTRY_PERMIT"
+	IdentityDocumentDocTypeMEDICARECARD          IdentityDocumentDocType = "MEDICARE_CARD"
+	IdentityDocumentDocTypeNATIONALID            IdentityDocumentDocType = "NATIONAL_ID"
+	IdentityDocumentDocTypePASSPORT              IdentityDocumentDocType = "PASSPORT"
+	IdentityDocumentDocTypePROOFOFAGE            IdentityDocumentDocType = "PROOF_OF_AGE"
+	IdentityDocumentDocTypeSIN                   IdentityDocumentDocType = "SIN"
+	IdentityDocumentDocTypeSSN                   IdentityDocumentDocType = "SSN"
+	IdentityDocumentDocTypeTAXID                 IdentityDocumentDocType = "TAX_ID"
 )
 
 // Valid indicates whether the value is a known member of the IdentityDocumentDocType enum.
@@ -4661,6 +4686,8 @@ func (e IdentityDocumentDocType) Valid() bool {
 		return true
 	case IdentityDocumentDocTypeDRIVERSLICENSE:
 		return true
+	case IdentityDocumentDocTypeHKANDMACAUENTRYPERMIT:
+		return true
 	case IdentityDocumentDocTypeMEDICARECARD:
 		return true
 	case IdentityDocumentDocTypeNATIONALID:
@@ -4668,6 +4695,12 @@ func (e IdentityDocumentDocType) Valid() bool {
 	case IdentityDocumentDocTypePASSPORT:
 		return true
 	case IdentityDocumentDocTypePROOFOFAGE:
+		return true
+	case IdentityDocumentDocTypeSIN:
+		return true
+	case IdentityDocumentDocTypeSSN:
+		return true
+	case IdentityDocumentDocTypeTAXID:
 		return true
 	default:
 		return false
@@ -8844,6 +8877,39 @@ func (e ContractRulesOrderTypesOutside) Valid() bool {
 	}
 }
 
+// Defines values for ContractRulesTifDefaultsTIF.
+const (
+	ContractRulesTifDefaultsTIFDAY ContractRulesTifDefaultsTIF = "DAY"
+	ContractRulesTifDefaultsTIFEPD ContractRulesTifDefaultsTIF = "EPD"
+	ContractRulesTifDefaultsTIFERL ContractRulesTifDefaultsTIF = "ERL"
+	ContractRulesTifDefaultsTIFGTC ContractRulesTifDefaultsTIF = "GTC"
+	ContractRulesTifDefaultsTIFIOC ContractRulesTifDefaultsTIF = "IOC"
+	ContractRulesTifDefaultsTIFOPG ContractRulesTifDefaultsTIF = "OPG"
+	ContractRulesTifDefaultsTIFPAX ContractRulesTifDefaultsTIF = "PAX"
+)
+
+// Valid indicates whether the value is a known member of the ContractRulesTifDefaultsTIF enum.
+func (e ContractRulesTifDefaultsTIF) Valid() bool {
+	switch e {
+	case ContractRulesTifDefaultsTIFDAY:
+		return true
+	case ContractRulesTifDefaultsTIFEPD:
+		return true
+	case ContractRulesTifDefaultsTIFERL:
+		return true
+	case ContractRulesTifDefaultsTIFGTC:
+		return true
+	case ContractRulesTifDefaultsTIFIOC:
+		return true
+	case ContractRulesTifDefaultsTIFOPG:
+		return true
+	case ContractRulesTifDefaultsTIFPAX:
+		return true
+	default:
+		return false
+	}
+}
+
 // Defines values for GetInvestedAccountsSummarySubscriptionStatus.
 const (
 	GetInvestedAccountsSummarySubscriptionStatusN0 GetInvestedAccountsSummarySubscriptionStatus = 0
@@ -9183,6 +9249,8 @@ func (e OrderStatusSide) Valid() bool {
 // Defines values for OrderStatusTif.
 const (
 	OrderStatusTifDAY OrderStatusTif = "DAY"
+	OrderStatusTifEPD OrderStatusTif = "EPD"
+	OrderStatusTifERL OrderStatusTif = "ERL"
 	OrderStatusTifGTC OrderStatusTif = "GTC"
 	OrderStatusTifIOC OrderStatusTif = "IOC"
 	OrderStatusTifOPG OrderStatusTif = "OPG"
@@ -9193,6 +9261,10 @@ const (
 func (e OrderStatusTif) Valid() bool {
 	switch e {
 	case OrderStatusTifDAY:
+		return true
+	case OrderStatusTifEPD:
+		return true
+	case OrderStatusTifERL:
 		return true
 	case OrderStatusTifGTC:
 		return true
@@ -9264,6 +9336,8 @@ func (e SingleOrderSubmissionRequestSide) Valid() bool {
 // Defines values for SingleOrderSubmissionRequestTif.
 const (
 	SingleOrderSubmissionRequestTifDAY SingleOrderSubmissionRequestTif = "DAY"
+	SingleOrderSubmissionRequestTifEPD SingleOrderSubmissionRequestTif = "EPD"
+	SingleOrderSubmissionRequestTifERL SingleOrderSubmissionRequestTif = "ERL"
 	SingleOrderSubmissionRequestTifGTC SingleOrderSubmissionRequestTif = "GTC"
 	SingleOrderSubmissionRequestTifIOC SingleOrderSubmissionRequestTif = "IOC"
 	SingleOrderSubmissionRequestTifOPG SingleOrderSubmissionRequestTif = "OPG"
@@ -9274,6 +9348,10 @@ const (
 func (e SingleOrderSubmissionRequestTif) Valid() bool {
 	switch e {
 	case SingleOrderSubmissionRequestTifDAY:
+		return true
+	case SingleOrderSubmissionRequestTifEPD:
+		return true
+	case SingleOrderSubmissionRequestTifERL:
 		return true
 	case SingleOrderSubmissionRequestTifGTC:
 		return true
@@ -10257,9 +10335,12 @@ func (e SubmitModelPortfolioOrderJSONBodyOrdersSide) Valid() bool {
 // Defines values for SubmitModelPortfolioOrderJSONBodyOrdersTif.
 const (
 	SubmitModelPortfolioOrderJSONBodyOrdersTifDAY SubmitModelPortfolioOrderJSONBodyOrdersTif = "DAY"
+	SubmitModelPortfolioOrderJSONBodyOrdersTifEPD SubmitModelPortfolioOrderJSONBodyOrdersTif = "EPD"
+	SubmitModelPortfolioOrderJSONBodyOrdersTifERL SubmitModelPortfolioOrderJSONBodyOrdersTif = "ERL"
 	SubmitModelPortfolioOrderJSONBodyOrdersTifGTC SubmitModelPortfolioOrderJSONBodyOrdersTif = "GTC"
 	SubmitModelPortfolioOrderJSONBodyOrdersTifIOC SubmitModelPortfolioOrderJSONBodyOrdersTif = "IOC"
 	SubmitModelPortfolioOrderJSONBodyOrdersTifOPG SubmitModelPortfolioOrderJSONBodyOrdersTif = "OPG"
+	SubmitModelPortfolioOrderJSONBodyOrdersTifPAX SubmitModelPortfolioOrderJSONBodyOrdersTif = "PAX"
 )
 
 // Valid indicates whether the value is a known member of the SubmitModelPortfolioOrderJSONBodyOrdersTif enum.
@@ -10267,11 +10348,17 @@ func (e SubmitModelPortfolioOrderJSONBodyOrdersTif) Valid() bool {
 	switch e {
 	case SubmitModelPortfolioOrderJSONBodyOrdersTifDAY:
 		return true
+	case SubmitModelPortfolioOrderJSONBodyOrdersTifEPD:
+		return true
+	case SubmitModelPortfolioOrderJSONBodyOrdersTifERL:
+		return true
 	case SubmitModelPortfolioOrderJSONBodyOrdersTifGTC:
 		return true
 	case SubmitModelPortfolioOrderJSONBodyOrdersTifIOC:
 		return true
 	case SubmitModelPortfolioOrderJSONBodyOrdersTifOPG:
+		return true
+	case SubmitModelPortfolioOrderJSONBodyOrdersTifPAX:
 		return true
 	default:
 		return false
@@ -13700,6 +13787,9 @@ type IdentificationCardColor string
 
 // IdentityDocument List of identity documents for MiFIR compliance.
 type IdentityDocument struct {
+	// CardColor Colour of the MEDICARE_CARD. Required for MEDICARE_CARD, ignored for other document types.
+	CardColor *IdentityDocumentCardColor `json:"cardColor,omitempty"`
+
 	// DocId Primary document number.
 	DocId string `json:"docId"`
 
@@ -13716,7 +13806,13 @@ type IdentityDocument struct {
 	//
 	// Example: AUS
 	IssuingCountry string `json:"issuingCountry"`
+
+	// IssuingState State or province code of issuance (ISO 3166-2). Required for DRIVERS_LICENSE issued by AUS.
+	IssuingState *string `json:"issuingState,omitempty"`
 }
+
+// IdentityDocumentCardColor Colour of the MEDICARE_CARD. Required for MEDICARE_CARD, ignored for other document types.
+type IdentityDocumentCardColor string
 
 // IdentityDocumentDocType Type of identity document.
 type IdentityDocumentDocType string
@@ -13790,7 +13886,7 @@ type IndividualIRABene struct {
 	Identification *map[string]string `json:"identification,omitempty"`
 	LastName       *string            `json:"lastName,omitempty"`
 	Location       *map[string]string `json:"location,omitempty"`
-	Ownership      *int64             `json:"ownership,omitempty"`
+	Ownership      *float32           `json:"ownership,omitempty"`
 	PerStripes     *string            `json:"perStripes,omitempty"`
 	Relationship   *string            `json:"relationship,omitempty"`
 	Type           *string            `json:"type,omitempty"`
@@ -18430,6 +18526,9 @@ type ContractRules struct {
 	// ForceOrderPreview Indicates if the order preview is forced upon the user before submission.
 	ForceOrderPreview *bool `json:"forceOrderPreview,omitempty"`
 
+	// FractionsInTif When true, fractional and cash-quantity support depends on the TIF.  Fractional size is allowed only if the selected tifTypes entry has fqt and the order type is in fraqTypes.  Cash quantity is allowed only if the entry has cqt and the order type is cqtTypes. When the field is absent, the existing behavior applies.
+	FractionsInTif *bool `json:"fractionsInTif,omitempty"`
+
 	// FraqInt Indicates decimal places for fractional order size.
 	FraqInt *int64 `json:"fraqInt,omitempty"`
 
@@ -18506,7 +18605,7 @@ type ContractRules struct {
 		SIZE *string `json:"SIZE,omitempty"`
 
 		// TIF The default TIF type for orders.
-		TIF *string `json:"TIF,omitempty"`
+		TIF *ContractRulesTifDefaultsTIF `json:"TIF,omitempty"`
 	} `json:"tifDefaults,omitempty"`
 
 	// TifTypes Indicates allowed tif types supported for the contract.
@@ -18527,6 +18626,9 @@ type ContractRulesOrderTypes string
 
 // ContractRulesOrderTypesOutside defines model for ContractRules.OrderTypesOutside.
 type ContractRulesOrderTypesOutside string
+
+// ContractRulesTifDefaultsTIF The default TIF type for orders.
+type ContractRulesTifDefaultsTIF string
 
 // CurrencyPairs defines model for currencyPairs.
 type CurrencyPairs map[string][]struct {

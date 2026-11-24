@@ -2,6 +2,15 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v0.2.0, 2026-11-24
+
+- `ContractRules.TifDefaults.TIF` changed from `*string` to `*ContractRulesTifDefaultsTIF`. New constants cover `DAY`, `EPD`, `ERL`, `GTC`, `IOC`, `OPG` and `PAX`. Callers that assign or read a plain string must convert.
+- `IndividualIRABene.Ownership` changed from `*int64` to `*float32`.
+- Added `ContractRules.FractionsInTif`.
+- Added `IdentityDocument.CardColor` with the `IdentityDocumentCardColor` type and the constants `IdentityDocumentCardColorBLUE`, `IdentityDocumentCardColorGREEN` and `IdentityDocumentCardColorYELLOW`. Added `IdentityDocument.IssuingState`.
+- Added `IdentityDocumentDocType` values `IdentityDocumentDocTypeHKANDMACAUENTRYPERMIT`, `IdentityDocumentDocTypeSIN`, `IdentityDocumentDocTypeSSN` and `IdentityDocumentDocTypeTAXID`.
+- Added the time in force values `EPD` and `ERL` to `OrderStatusTif` and `SingleOrderSubmissionRequestTif`. Added `EPD`, `ERL` and `PAX` constants for `SubmitModelPortfolioOrderJSONBodyOrdersTif`.
+
 ## v0.1.7, 2026-11-19
 
 - Raised the minimum Go version in `go.mod` from 1.26.10 to 1.26.11, which fixes the `net/http` crash GO-2026-6859 found by govulncheck.
